@@ -6,20 +6,22 @@ public:
         int i = 0;
         int n = a.size();
 
-        while (i < n && a[i][1] < b[0]){
+        int start2 = b[0];
+        int end2 = b[1];
+
+        while (i < n && a[i][1] < start2){
             res.push_back(a[i]);
             i++;
         }
         // merge overlapping intervals
 
-        while(i < n && a[i][0] <= b[1]){
+        while(i < n && a[i][0]<= end2){
 
-            b[0] = min(b[0] , a[i][0]);
-            b[1] = max(b[1] , a[i][1]);
-
+            start2 = min(a[i][0] , start2);
+            end2 = max(a[i][1] , end2);
             i++;
         }
-        res.push_back(b);
+        res.push_back({start2 , end2});
 
         // remaining intervals
         while(i < n){
