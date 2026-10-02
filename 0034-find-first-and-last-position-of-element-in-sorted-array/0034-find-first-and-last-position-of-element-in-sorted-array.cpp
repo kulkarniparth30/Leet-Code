@@ -16,7 +16,7 @@ public:
 
             if(nums[mid] == target){
                 first = mid;
-                high = mid - 1;  // go left
+                high = mid - 1;  // go left (we found first occurance there may be one target in left so go left)
             }
             else if (nums[mid] < target){
                 low = mid + 1;
